@@ -14,7 +14,7 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 intent_name="string"
-QR=['0','1','2','3','4','5','6']
+QR=['0','1','2','3','4','5','6','7']
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
@@ -43,31 +43,35 @@ def processRequest(req):
     if "ChooseCity" in intent_name:        
         QR[0]="Sector in "+city_names
         QR[1]="Other City?Specify"
-        QR[2]="Hot Property"
-        QR[3]="Price Range"
-        QR[4]="Land Area"
-        QR[5]="Property Type"
+        QR[2]="(Y)"
+        QR[3]="Hot Property"
+        QR[4]="Price Range"
+        QR[5]="Land Area"
+        QR[6]="Property Type"
     elif "ChooseSector" in intent_name:        
         QR[0]="(Y)"
         QR[1]="Other Sector?Specify"
         QR[2]="Hot Property"
         QR[3]="Price Range"
         QR[4]="Land Area"
-        QR[5]="Property Type"   
+        QR[5]="Property Type" 
+        QR[6]="Change Location" 
     elif "ChangeType" in intent_name:        
         QR[0]="(Y)"
         QR[1]="Other Type?Specify"
         QR[2]="Hot Property"
         QR[3]="Price Range"
         QR[4]="Land Area"
-        QR[5]="Change Location"  
+        QR[5]="Property Type"  
+        QR[6]="Change Location"  
     elif "ChooseHotProperties" in intent_name:        
         QR[0]="(Y)"
         QR[1]="Change Location"
         QR[2]="Hot Property"
         QR[3]="Price Range"
         QR[4]="Land Area"
-        QR[5]="Change City" 
+        QR[5]="Property Type" 
+        QR[6]="Change City" 
     elif "ChoosePlotArea" in intent_name:        
         QR[0]="(Y)"
         QR[1]="Other Area?Specify"
@@ -75,13 +79,15 @@ def processRequest(req):
         QR[3]="Price Range"
         QR[4]="Land Area"
         QR[5]="Change Location"
+        QR[6]="Property Type" 
     elif "DefinePriceRange" in intent_name:        
         QR[0]="(Y)"
         QR[1]="Other Range?Specify"
         QR[2]="Hot Property"
         QR[3]="Price Range"
         QR[4]="Land Area"
-        QR[5]="Change Location"
+        QR[5]="Property Type" 
+        QR[6]="Change Location"
     city_names=processlocation(req)
     sector_names=processSector(req)
     property_type=processPropertyType(req)
@@ -312,6 +318,16 @@ def makeWebhookResult(data):
             },
                  {
                 "content_type":"text",
+                "title": QR[5],
+                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
+            },
+                  {
+                "content_type":"text",
+                "title": QR[6],
+                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
+            },
+                 {
+                "content_type":"text",
                 "title": "Buy Property",
                 "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
             }
@@ -382,6 +398,16 @@ def makeWebhookResult(data):
                  {
                 "content_type":"text",
                 "title": QR[4],
+                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
+            },
+                  {
+                "content_type":"text",
+                "title": QR[5],
+                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
+            },
+                  {
+                "content_type":"text",
+                "title": QR[6],
                 "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
             },
                  {
@@ -489,6 +515,16 @@ def makeWebhookResult(data):
                  {
                 "content_type":"text",
                 "title": QR[4],
+                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
+            },
+                  {
+                "content_type":"text",
+                "title": QR[5],
+                "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
+            },
+                  {
+                "content_type":"text",
+                "title": QR[6],
                 "payload": "YOUR_DEFINED_PAYLOAD_FOR_NEXT_IMAGE"
             },
                  {
