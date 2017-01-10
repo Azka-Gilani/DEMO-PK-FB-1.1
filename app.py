@@ -252,7 +252,7 @@ def makeWebhookResult(data):
     variable3=str(row_number[2])
     variable4=str(row_number[3]) 
     
-    speech = "Here are some properties with your choice: "+"\n"+ row_image[0]+" in "+ row_location[0] + " with price "+ row_price[0] +"\n"+ row_title[1] +" in "+ row_location[1] + " with price "+ row_price[1]
+    speech = "Here are some properties with your choice: https://www.aarz.pk/property-detail/"+row_slug[0] + " https://www.aarz.pk/property-detail/"+row_slug[1] +" Type: 'Hot Property','Price Range','Land Area','Change Location','Buy Property' "
     if "unable" in row_title[0]:
         message={
          "text":row_title[0],
