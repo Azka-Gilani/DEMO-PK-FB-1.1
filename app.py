@@ -109,7 +109,7 @@ def processRequest(req):
     #else:
     # minimum_value,maximum_value=minimum_value,maximum_value    
     #baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
-    baseurl="https://www.aarz.pk/search/bot?postedBy=searchPage&view=&city_s="+city_names+"&loc1="+sector_names+"&price_min="+maximum_value+"&price_max=0&land_area="+unit_property+"&min_r=0&max_r="+area_property+"&estate_agent=&hot="+latest+"&purpose=Sell&property_type="+property_type+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel"
+    baseurl="https://www.aarz.pk/search/bot?postedBy=searchPage&view=&city_s="+city_names+"&loc1="+sector_names+"&price_min="+maximum_value+"&price_max=0&land_area="+unit_property+"&min_r=0&max_r="+area_property+"&estate_agent=&hot="+latest+"&purpose=Sell&property_type="+property_type+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
     result = urllib.urlopen(baseurl).read()
     print(result)
     data = json.loads(result)
