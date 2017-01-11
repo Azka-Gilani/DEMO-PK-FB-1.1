@@ -108,7 +108,8 @@ def processRequest(req):
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
     # minimum_value,maximum_value=minimum_value,maximum_value    
-    baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
+    #baseurl = "https://aarz.pk/bot/index.php?city_name="+city_names+"&sector_name="+sector_names+"&minPrice="+maximum_value+"&type="+property_type+"&LatestProperties="+latest+"&UnitArea="+area_property+"&Unit="+unit_property+"&school="+school+"&airport="+airport+"&transport="+transport+"&security="+security+"&shopping_mall="+malls+"&fuel="+fuel
+    baseurl="https://www.aarz.pk/search?postedBy=searchPage&view=&city_s="+city_names+"&loc1=&price_min=0&price_max=0&land_area=&search_keyword=&day_post=Any&estate_agent=&purpose=Sell"
     result = urllib.urlopen(baseurl).read()
     data = json.loads(result)
     res = makeWebhookResult(data)
