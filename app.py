@@ -104,6 +104,7 @@ def processRequest(req):
     #minimum_value=processMinimum(req)
     maximum_value=processMaximum(req)
     latest=processLatestProperties(req)
+    project_name=processProjectName(req)
     #if minimum_value > maximum_value:
     #    minimum_value,maximum_value=maximum_value,minimum_value
     #else:
@@ -121,13 +122,6 @@ def processIntentName(req):
     parameters = result.get("metadata")
     intent = parameters.get("intentName")
     return intent
-
-def sendSparkPOST(url, data):
-    request = urllib2.Request(url, json.dumps(data),
-    headers={"Accept" : "application/json","Content-Type":"application/json"})
-    request.add_header("Authorization", "Bearer "+bearer)
-    contents = urllib2.urlopen(request).read()
-    return contents
 
 def processlocation(req):
     result = req.get("result")
@@ -225,6 +219,12 @@ def processFuel(req):
     parameters = result.get("parameters")
     fuel = parameters.get("fuelstation")
     return fuel
+
+def processProjectName(req):
+    result = req.get("result")
+    parameters = result.get("parameters")
+    project_name = parameters.get("ProjectName")
+    return project_name    
    
 def makeWebhookResult(data):
     i=0
